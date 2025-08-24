@@ -7,53 +7,68 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Password Popup -->
-  <div id="login-popup" class="popup">
-    <div class="popup-content">
-      <h2>Enter Password</h2>
-      <input type="password" id="password-input" placeholder="Password">
-      <button id="login-btn">Login</button>
+
+  <!-- ✅ Step 1: Login Screen -->
+  <div id="login-screen">
+    <h2>Enter Password</h2>
+    <input type="password" id="password-input" placeholder="Password" />
+    <button onclick="checkPassword()">Login</button>
+    <p id="error-msg" style="color: red; display: none;">Wrong Password!</p>
+  </div>
+
+  <!-- ✅ Step 2: Wrap your whole app -->
+  <div id="app" style="display:none;">
+
+    <h1>Expense Tracker</h1>
+
+    <div class="input-section">
+      <label for="amount">Enter Amount (Rs):</label>
+      <input type="number" id="amount">
+
+      <label for="category">Spent On:</label>
+      <input type="text" id="category">
+
+      <button onclick="addExpense()">Add Expense</button>
     </div>
-  </div>
 
-  <!-- Top Navigation -->
-  <div class="navbar">
-    <button id="add-file-btn">Add File</button>
-    <button id="open-files-btn">Open Previous Files</button>
-  </div>
-
-  <!-- Sidebar for previous files -->
-  <div id="sidebar" class="sidebar">
-    <h3>Previous Files</h3>
-    <ul id="file-list"></ul>
-  </div>
-
-  <!-- Expense Page -->
-  <div id="expense-page" class="hidden">
     <h2>Expenses</h2>
-    <button id="add-expense-btn">Add Expense</button>
-    <table>
+    <table id="expense-table" border="1">
       <thead>
         <tr>
-          <th>Money Spent</th>
-          <th>On What</th>
-          <th>Date & Time</th>
+          <th>Time</th>
+          <th>Amount (Rs)</th>
+          <th>Category</th>
         </tr>
       </thead>
-      <tbody id="expense-table"></tbody>
+      <tbody>
+        <!-- Rows will be added dynamically -->
+      </tbody>
     </table>
-  </div>
 
-  <!-- Add Expense Popup -->
-  <div id="expense-popup" class="popup">
-    <div class="popup-content">
-      <h2>Add Expense</h2>
-      <input type="text" id="item-name" placeholder="Item Name">
-      <input type="number" id="item-price" placeholder="Price">
-      <button id="save-expense-btn">Enter</button>
+    <div class="summary">
+      <p><strong>Weekly Total:</strong> <span id="weekly-total">0</span> Rs</p>
+      <p><strong>Monthly Total:</strong> <span id="monthly-total">0</span> Rs</p>
     </div>
+
   </div>
 
+  <!-- ✅ Step 3: Password script -->
+  <script>
+    function checkPassword() {
+      const input = document.getElementById("password-input").value;
+      const correctPassword = "1234"; // change this to your own password
+
+      if (input === correctPassword) {
+        document.getElementById("login-screen").style.display = "none";
+        document.getElementById("app").style.display = "block";
+      } else {
+        document.getElementById("error-msg").style.display = "block";
+      }
+    }
+  </script>
+
+  <!-- Your existing script -->
   <script src="script.js"></script>
+
 </body>
 </html>
