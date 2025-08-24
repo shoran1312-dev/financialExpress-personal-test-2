@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="loginScreen">
+    <div id="loginBox">
+      <h2>Enter Password</h2>
+      <input type="password" id="passwordInput" placeholder="Password">
+      <button onclick="checkPassword()">Enter</button>
+    </div>
+  </div>
+
+  <div id="app" class="hidden">
+    <header>
+      <button id="addFileBtn">+ Add File</button>
+      <button id="openFilesBtn">Open Previous Files</button>
+    </header>
+
+    <aside id="sidebar" class="hidden">
+      <h3>Previous Files</h3>
+      <ul id="fileList"></ul>
+    </aside>
+
+    <main id="fileView"></main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
